@@ -1,0 +1,10 @@
+resource "catalog-item-type" "null" {
+  name = "ssr_vdi_1.0_206586_catalog"
+  uuid = "e95d1163-fe46-4bbf-a1a5-b0f9f7e0f23d"
+  dateCreated = "2023-09-15T14:40:34.000Z"
+  description = "Catalog item to provision Morpheus VDI Pool"
+  labels = [ { name = "ssr_vdi_1.0" } ]
+  lastUpdated = "2024-06-26T22:52:55.000Z"
+  refType = "OperationalWorkflow"
+  visibility = "public"
+}
