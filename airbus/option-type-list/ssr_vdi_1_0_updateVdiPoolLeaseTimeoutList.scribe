@@ -1,0 +1,22 @@
+resource "option-type-list" "ssr_vdi_1.0_updateVdiPoolLeaseTimeoutList" {
+  name = "ssr_vdi_1.0_updateVdiPoolLeaseTimeoutList"
+  uuid = "167727b3-5ad6-441d-9563-ba015e812ed6"
+  description = "Lease Timeout"
+  initialDataset = "[{\"name\": \"leaseTimeOut\", \"value\": 180}]"
+  labels = [ "ssr_vdi_1.0" ]
+  realTime = true
+  translationScript = <<EOFSCRIBE
+if(input.updateVdiPoolSize != null){
+      var v = parseInt((input.updateVdiPoolSize.split(";")[2]))
+      for(var x = 0; x < data.length; x++){
+          for(var y = 0; y <= parseInt(data[x].value); y++){
+          if((y <= 60) && (y%15 === 0)){
+              if(y === v){results.push({ "name": y.toString() + " Current", "value": y })}
+              else{results.push({ "name": y.toString(), "value": y })}}
+          else if((y > 60) && (y%60 === 0)){
+              if(y === v){results.push({ "name": y.toString() + " Current", "value": y })}
+              else{results.push({ "name": y.toString(), "value": y })}}}}}
+EOFSCRIBE
+  type = "manual"
+  visibility = "public"
+}

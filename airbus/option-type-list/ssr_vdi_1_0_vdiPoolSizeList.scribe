@@ -1,0 +1,17 @@
+resource "option-type-list" "ssr_vdi_1.0_vdiPoolSizeList" {
+  name = "ssr_vdi_1.0_vdiPoolSizeList"
+  uuid = "c177e443-bc00-4d7f-9213-81dd9ccacaa7"
+  description = "vdiPoolSizeList"
+  initialDataset = <<EOFSCRIBE
+[
+  { "name": "Small", "value": "Small" },
+  { "name": "Medium", "value": "Medium" },
+  { "name": "Large", "value": "Large" },
+  { "name": "Custom", "value": "Custom" }
+]
+EOFSCRIBE
+  labels = [ "ssr_vdi_1.0" ]
+  realTime = true
+  type = "manual"
+  visibility = "public"
+}

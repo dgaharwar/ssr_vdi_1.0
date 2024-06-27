@@ -1,0 +1,19 @@
+resource "option-type" "updateVdiPoolMaxSize" {
+  code = "updateVdiPoolMaxSize"
+  name = "ssr_vdi_1.0_updateVdiPoolMaxSize"
+  uuid = "52872108-58c7-43e7-9ac4-b82168c75025"
+  dependsOnCode = "matchAll::actionVdiPool,updateVdiPoolSize"
+  description = "Update VDI Pool Max Size"
+  displayOrder = 19
+  fieldContext = "config.customOptions"
+  fieldLabel = "Max Size"
+  fieldName = "updateVdiPoolMaxSize"
+  helpBlock = "The total number of virtual desktops this pool can have."
+  labels = [ "ssr_vdi_1.0" ]
+  optionList = { name = "ssr_vdi_1.0_updateVdiPoolMaxSizeList" }
+  optionSource = "list"
+  requireOnCode = "actionVdiPool:(Update)"
+  showOnCreate = false
+  type = "select"
+  visibleOnCode = "matchAll::actionVdiPool:(Update)"
+}

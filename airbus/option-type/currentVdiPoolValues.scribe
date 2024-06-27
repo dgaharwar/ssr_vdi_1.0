@@ -1,0 +1,18 @@
+resource "option-type" "currentVdiPoolValues" {
+  code = "currentVdiPoolValues"
+  name = "ssr_vdi_1.0_updateCurrentVdiPoolValues"
+  uuid = "9ba6acf9-7107-4135-ab63-8efedad8f5f1"
+  dependsOnCode = "matchAll::actionVdiPool,vdiPoolName"
+  description = "Current VDI Pool Values"
+  displayOrder = 3
+  fieldContext = "config.customOptions"
+  fieldLabel = "Current Description"
+  fieldName = "currentVdiPoolValues"
+  helpBlock = "Input used to get the current values for the VDI pool"
+  labels = [ "ssr_vdi_1.0" ]
+  requireOnCode = "actionVdiPool:(Update)"
+  showOnCreate = false
+  showOnEdit = false
+  type = "select"
+  visibleOnCode = "actionVdiPool:(Update)"
+}

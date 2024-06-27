@@ -1,0 +1,20 @@
+resource "option-type" "newVdiPoolName" {
+  code = "newVdiPoolName"
+  name = "ssr_vdi_1.0_newVdiPoolName"
+  uuid = "80300440-94a9-4bce-bbf9-3e07755bfba3"
+  dependsOnCode = "actionVdiPool,newVdiPoolName"
+  description = "VDI Pool Name"
+  displayOrder = 1
+  displayValueOnDetails = true
+  editable = true
+  fieldContext = "config.customOptions"
+  fieldLabel = "Pool Name"
+  fieldName = "newVdiPoolName"
+  helpBlock = "Unique VDI Pool Name, has to be unique inside of your Tenant. It can not be empty, must be between 4 and 11 characters (digits or upper/lower case characters). It cannot start or end with a dash or start with a number."
+  labels = [ "ssr_vdi_1.0" ]
+  placeHolder = "Enter a name for the new VDI Pool"
+  requireOnCode = "actionVdiPool:(Create)"
+  showOnCreate = false
+  verifyPattern = "^(?![0-9])(?!-)[a-zA-Z0-9-]{4,20}(?<!-)$"
+  visibleOnCode = "actionVdiPool:(Create)"
+}

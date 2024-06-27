@@ -1,0 +1,36 @@
+resource "task-set" "ssr_vdi_1.0_run_vdi_pool_workflow" {
+  name = "ssr_vdi_1.0_run_vdi_pool_workflow"
+  uuid = "d2630abc-fba7-4250-a41f-580e211c3785"
+  dateCreated = "2023-09-15T10:52:46.000Z"
+  labels = [ "ssr_vdi_1.0" ]
+  lastUpdated = "2024-06-26T22:52:36.000Z"
+  optionTypes = [
+    { code = "actionVdiPool" },
+    { code = "newVdiPoolName" },
+    { code = "vdiPoolName" },
+    { code = "currentVdiPoolValues" },
+    { code = "VDIsInPool" },
+    { code = "deleteVdiPoolConfirmation" },
+    { code = "vdiPoolDescription" },
+    { code = "updateVdiPoolDescription" },
+    { code = "vdiSelectedCloud" },
+    { code = "vdiSelectedGroup" },
+    { code = "vdiSelectedPlan" },
+    { code = "vdiPoolOperatingSystem" },
+    { code = "vdiPoolSize" },
+    { code = "vdiPoolMaxSize" },
+    { code = "vdiPoolInitialPoolSize" },
+    { code = "vdiPoolMinIdle" },
+    { code = "vdiPoolMaxIdle" },
+    { code = "vdiPoolLeaseTimeout" },
+    { code = "updateVdiPoolSize" },
+    { code = "updateVdiPoolMaxSize" },
+    { code = "updateVdiPoolInitialPoolSize" },
+    { code = "updateVdiPoolMinIdle" },
+    { code = "updateVdiPoolMaxIdle" },
+    { code = "updateVdiPoolLeaseTimeout" },
+    { code = "vdiSsrDefinition" }
+  ]
+  taskSetType = "operation"
+  visibility = "public"
+}

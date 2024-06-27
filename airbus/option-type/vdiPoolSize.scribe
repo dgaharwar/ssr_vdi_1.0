@@ -1,0 +1,20 @@
+resource "option-type" "vdiPoolSize" {
+  code = "vdiPoolSize"
+  name = "ssr_vdi_1.0_vdiPoolSize"
+  uuid = "67ff5e92-fe11-42e6-a346-19c5b2f3a2ff"
+  defaultValue = "Small"
+  dependsOnCode = "actionVdiPool"
+  description = "Pool Size"
+  displayOrder = 12
+  fieldContext = "config.customOptions"
+  fieldLabel = "VDI Pool Size"
+  fieldName = "vdiPoolSize"
+  helpBlock = "Select the VDI Pool size."
+  labels = [ "ssr_vdi_1.0" ]
+  optionList = { name = "ssr_vdi_1.0_vdiPoolSizeList" }
+  optionSource = "list"
+  required = true
+  showOnEdit = false
+  type = "select"
+  visibleOnCode = "actionVdiPool:(Create)"
+}

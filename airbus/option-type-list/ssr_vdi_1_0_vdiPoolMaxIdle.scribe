@@ -1,0 +1,21 @@
+resource "option-type-list" "ssr_vdi_1.0_vdiPoolMaxIdle" {
+  name = "ssr_vdi_1.0_vdiPoolMaxIdle"
+  uuid = "be826dd4-6a3c-4c13-847a-5c624157a2b3"
+  description = "Max Idle"
+  initialDataset = "[{\"name\": \"maxPoolIdle\", \"value\": 50}]"
+  labels = [ "ssr_vdi_1.0" ]
+  realTime = true
+  translationScript = <<EOFSCRIBE
+if((input.vdiPoolMaxSize != null) && (input.vdiPoolMinIdle != null)){
+      for(var x = 0; x < data.length; x++){
+      if (input.vdiPoolSize == "Custom"){
+      for(var y = (parseInt(input.vdiPoolMinIdle) +1); (y <= parseInt(input.vdiPoolMaxSize)) && (y <= parseInt(data[x].value)); y++){
+      if(y <= 25){results.push({ "name": y.toString(), "value": y });}
+      else if((y > 25) && (y%10 === 0)){results.push({ "name": y.toString(), "value": y });}}}
+      else if(input.vdiPoolSize == "Small"){results.push({ "name": "2", "value": 2 });}
+      else if(input.vdiPoolSize == "Medium"){results.push({ "name": "8", "value": 8 });}
+      else if(input.vdiPoolSize == "Large"){results.push({ "name": "10", "value": 10 });}}}
+EOFSCRIBE
+  type = "manual"
+  visibility = "public"
+}

@@ -1,0 +1,18 @@
+resource "option-type" "updateVdiPoolDescription" {
+  code = "updateVdiPoolDescription"
+  name = "ssr_vdi_1.0_updateVdiPoolDescription"
+  uuid = "c73fa9e2-94cd-4827-8274-256df920cdf7"
+  dependsOnCode = "matchAll::actionVdiPool"
+  description = "New Description"
+  displayOrder = 7
+  exportMeta = true
+  fieldContext = "config.customOptions"
+  fieldLabel = "New Description"
+  fieldName = "updateVdiPoolDescription"
+  helpBlock = "New VDI Pool description."
+  labels = [ "ssr_vdi_1.0" ]
+  placeHolder = "New Description of the VDI Pool"
+  requireOnCode = "matchAll::actionVdiPool:(Update)"
+  showOnEdit = false
+  visibleOnCode = "matchAll::actionVdiPool:(Update)"
+}

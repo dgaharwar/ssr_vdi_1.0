@@ -1,0 +1,20 @@
+resource "option-type" "deleteVdiPoolConfirmation" {
+  code = "deleteVdiPoolConfirmation"
+  name = "ssr_vdi_1.0_vdiPoolDeleteConfirmation"
+  uuid = "485d8a7b-1eb9-435b-93ea-887a7d041012"
+  dependsOnCode = "actionVdiPool,vdiPoolName,VDIsInPool"
+  description = "Are you sure you want this VDI pool to be deleted?"
+  displayOrder = 5
+  displayValueOnDetails = true
+  editable = true
+  exportMeta = true
+  fieldContext = "config.customOptions"
+  fieldLabel = "Delete confirmation"
+  fieldName = "deleteVdiPoolConfirmation"
+  helpBlock = "Type Delete to confirm deletion."
+  labels = [ "ssr_vdi_1.0" ]
+  placeHolder = "Type Delete to confirm deletion"
+  requireOnCode = "actionVdiPool:(Delete)"
+  verifyPattern = "^Delete|$"
+  visibleOnCode = "actionVdiPool:(Delete)"
+}

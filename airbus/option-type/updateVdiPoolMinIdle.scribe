@@ -1,0 +1,19 @@
+resource "option-type" "updateVdiPoolMinIdle" {
+  code = "updateVdiPoolMinIdle"
+  name = "ssr_vdi_1.0_updateVdiPoolMinIdle"
+  uuid = "c6eb0064-6de9-4395-9f73-f51b8c99e8ba"
+  dependsOnCode = "matchAll::actionVdiPool,updateVdiPoolSize,updateVdiPoolMaxSize"
+  description = "VDI Pool Min Idle"
+  displayOrder = 21
+  fieldContext = "config.customOptions"
+  fieldLabel = "Min Idle"
+  fieldName = "updateVdiPoolMinIdle"
+  helpBlock = "The minimum number of virtual desktops that should remain idle and ready."
+  labels = [ "ssr_vdi_1.0" ]
+  optionList = { name = "ssr_vdi_1.0_updateVdiPoolMinIdleList" }
+  optionSource = "list"
+  requireOnCode = "actionVdiPool:(Update)"
+  showOnCreate = false
+  type = "select"
+  visibleOnCode = "matchAll::actionVdiPool:(Update)"
+}

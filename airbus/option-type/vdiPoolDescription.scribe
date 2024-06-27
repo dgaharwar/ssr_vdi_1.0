@@ -1,0 +1,18 @@
+resource "option-type" "vdiPoolDescription" {
+  code = "vdiPoolDescription"
+  name = "ssr_vdi_1.0_vdiPoolDescription"
+  uuid = "f6550b78-f82e-4f14-9602-0bbe2aa9c351"
+  dependsOnCode = "actionVdiPool"
+  description = "Description"
+  displayOrder = 6
+  exportMeta = true
+  fieldContext = "config.customOptions"
+  fieldLabel = "Description"
+  fieldName = "vdiPoolDescription"
+  helpBlock = "Description of the VDI Pool"
+  labels = [ "ssr_vdi_1.0" ]
+  placeHolder = "Description of the VDI Pool"
+  requireOnCode = "actionVdiPool:(Create)"
+  showOnEdit = false
+  visibleOnCode = "actionVdiPool:(Create)"
+}

@@ -1,0 +1,20 @@
+resource "option-type" "vdiPoolOperatingSystem" {
+  code = "vdiPoolOperatingSystem"
+  name = "ssr_vdi_1.0_vdiPoolOs"
+  uuid = "136280c7-0b30-4562-b006-c7bd3028641e"
+  dependsOnCode = "actionVdiPool"
+  description = "VDI Pool Operating System"
+  displayOrder = 11
+  exportMeta = true
+  fieldContext = "config.customOptions"
+  fieldLabel = "Operating System"
+  fieldName = "vdiPoolOperatingSystem"
+  helpBlock = "Select the VDI pool Operating System."
+  labels = [ "ssr_vdi_1.0" ]
+  optionList = { name = "ssr_vdi_1.0_vdiOsList" }
+  optionSource = "list"
+  requireOnCode = "actionVdiPool:(Create)"
+  showOnEdit = false
+  type = "select"
+  visibleOnCode = "actionVdiPool:(Create)"
+}

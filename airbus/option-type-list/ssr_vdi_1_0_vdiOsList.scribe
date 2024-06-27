@@ -1,0 +1,12 @@
+resource "option-type-list" "ssr_vdi_1.0_vdiOsList" {
+  name = "ssr_vdi_1.0_vdiOsList"
+  uuid = "c85cb452-147f-47f2-9125-c171d62f5226"
+  initialDataset = <<EOFSCRIBE
+'linux','linux'
+'windows','windows'
+EOFSCRIBE
+  labels = [ "ssr_vdi_1.0" ]
+  realTime = true
+  type = "manual"
+  visibility = "public"
+}

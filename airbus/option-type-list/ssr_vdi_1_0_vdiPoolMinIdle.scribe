@@ -1,0 +1,21 @@
+resource "option-type-list" "ssr_vdi_1.0_vdiPoolMinIdle" {
+  name = "ssr_vdi_1.0_vdiPoolMinIdle"
+  uuid = "6b4c7e0e-64b5-4aae-a425-ac9682051a56"
+  description = "Min Idle"
+  initialDataset = "[{\"name\": \"minPoolIdle\", \"value\": 25}]"
+  labels = [ "ssr_vdi_1.0" ]
+  realTime = true
+  translationScript = <<EOFSCRIBE
+if(input.vdiPoolMaxSize != null){
+  for(var x = 0; x < data.length; x++){
+    if(input.vdiPoolSize == "Custom"){
+      for(var y = 0; (y <= parseInt(input.vdiPoolMaxSize)) && (y <= parseInt(data[x].value)); y++){
+        if(y <= 25){results.push({ "name": y.toString(), "value": y });}
+        else if((y > 25) && (y%10 === 0)){results.push({ "name": y.toString(), "value": y });}}}
+    else if(input.vdiPoolSize == "Small"){results.push({ "name": "1", "value": 1 });}
+    else if(input.vdiPoolSize == "Medium"){results.push({ "name": "2", "value": 2 });}
+    else if(input.vdiPoolSize == "Large"){results.push({ "name": "5", "value": 5 });}}}
+EOFSCRIBE
+  type = "manual"
+  visibility = "public"
+}

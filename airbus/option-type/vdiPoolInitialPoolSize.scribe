@@ -1,0 +1,20 @@
+resource "option-type" "vdiPoolInitialPoolSize" {
+  code = "vdiPoolInitialPoolSize"
+  name = "ssr_vdi_1.0_vdiPoolInitialPoolSize"
+  uuid = "d7a72c10-3661-49a0-9c97-f1e037260ff9"
+  dependsOnCode = "matchAll::actionVdiPool,vdiPoolSize,vdiPoolMaxSize"
+  description = "VDI Pool Initial Pool Size"
+  displayOrder = 14
+  fieldContext = "config.customOptions"
+  fieldLabel = "Initial Pool Size"
+  fieldName = "vdiPoolInitialPoolSize"
+  helpBlock = "Number of virtual desktops that will be prepared when the pool is created."
+  labels = [ "ssr_vdi_1.0" ]
+  noBlank = true
+  optionList = { name = "ssr_vdi_1.0_vdiInitialPoolSize" }
+  optionSource = "list"
+  required = true
+  showOnEdit = false
+  type = "select"
+  visibleOnCode = "matchAll::actionVdiPool:(Create),vdiPoolSize:(Custom)"
+}

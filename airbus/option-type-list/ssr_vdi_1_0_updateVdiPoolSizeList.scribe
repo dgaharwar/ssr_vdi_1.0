@@ -1,0 +1,32 @@
+resource "option-type-list" "ssr_vdi_1.0_updateVdiPoolSizeList" {
+  name = "ssr_vdi_1.0_updateVdiPoolSizeList"
+  uuid = "1462bfb0-b402-4176-b22a-afc386cfa01e"
+  description = "Update VDI Pool Size"
+  initialDataset = "[{\"name\": \"Small\", \"value\": \"10;1;1;2\"}, {\"name\": \"Medium\", \"value\": \"25;5;2;8\"}, {\"name\": \"Large\", \"value\": \"50;10;5;10\"}]"
+  labels = [ "ssr_vdi_1.0" ]
+  realTime = true
+  translationScript = <<EOFSCRIBE
+if(input.currentVdiPoolValues){
+      var current = (input.currentVdiPoolValues.split(";").map(Number)).slice(2,6)
+      var timeOut = (input.currentVdiPoolValues.split(";").map(Number)).slice(6)
+      var values = []
+      function compare_size(a,b){
+          if(a.length !== b.length){return false}
+          else{ for(var i = 0; i < a.length; i++){
+              if(a[i] !== b[i]){return false}}
+              return true}}
+      function get_current(values){return values.name.includes("Current")}
+      for(var x = 0; x < data.length; x++){
+          if(compare_size(current,data[x].value.split(";").map(Number))){
+              values.push({"name": data[x].name + " Current", "value": data[x].name + " Current;" + (data[x].value).split(";").map(Number) + ";" + timeOut})}
+          else{values.push({"name": data[x].name, "value": data[x].name + ";" + (data[x].value).split(";").map(Number)})}}
+      if(values.findIndex(get_current) === -1){
+          values.push({"name": "Custom Current", "value": "Custom Current;" + current + ";" + timeOut})}
+      else{values.push({"name": "Custom", "value": "Custom;" + current + ";" + timeOut})}
+      var res = values.findIndex(get_current)
+      for(var y = res; y < values.length; y++){
+          results.push({"name": values[y].name, "value":  values[y].value})}}
+EOFSCRIBE
+  type = "manual"
+  visibility = "public"
+}

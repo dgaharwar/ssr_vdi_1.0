@@ -1,0 +1,16 @@
+resource "option-type-list" "ssr_vdi_1.0_vdiPlanList" {
+  name = "ssr_vdi_1.0_vdiPlanList"
+  uuid = "7f0ac089-137a-4afe-9138-928b6d219fc0"
+  apiType = "servicePlans"
+  description = "Service Plans"
+  initialDataset = "'ssr_vdi_1.0_custom_vdi_plan_tier',19004"
+  labels = [ "ssr_vdi_1.0" ]
+  realTime = true
+  requestScript = <<EOFSCRIBE
+if(input.vdiSelectedCloud && input.vdiSelectedGroup){
+      results.zoneId = input.vdiSelectedCloud.split(';')[0];
+      results.siteId = input.vdiSelectedGroup.split(';')[0];}
+EOFSCRIBE
+  type = "manual"
+  visibility = "public"
+}

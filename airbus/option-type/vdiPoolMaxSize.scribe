@@ -1,0 +1,20 @@
+resource "option-type" "vdiPoolMaxSize" {
+  code = "vdiPoolMaxSize"
+  name = "ssr_vdi_1.0_vdiPoolMaxSize"
+  uuid = "a12c599c-eb5d-44f4-87c8-0a19cb6b0fff"
+  dependsOnCode = "matchAll::actionVdiPool,vdiPoolSize"
+  description = "VDI Pool Max Size"
+  displayOrder = 13
+  fieldContext = "config.customOptions"
+  fieldLabel = "Max Size"
+  fieldName = "vdiPoolMaxSize"
+  helpBlock = "The total number of virtual desktops this pool can have."
+  labels = [ "ssr_vdi_1.0" ]
+  noBlank = true
+  optionList = { name = "ssr_vdi_1.0_vdiPoolMaxSize" }
+  optionSource = "list"
+  required = true
+  showOnEdit = false
+  type = "select"
+  visibleOnCode = "matchAll::actionVdiPool:(Create),vdiPoolSize:(Custom)"
+}

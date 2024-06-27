@@ -1,0 +1,20 @@
+resource "option-type" "vdiPoolMaxIdle" {
+  code = "vdiPoolMaxIdle"
+  name = "ssr_vdi_1.0_vdiPoolMaxIdle"
+  uuid = "9f1de08f-d493-46c5-9643-f8d573b32046"
+  dependsOnCode = "matchAll::vdiPoolSize,vdiPoolMinIdle,vdiPoolMaxSize"
+  description = "VDI Pool Max Idle"
+  displayOrder = 16
+  fieldContext = "config.customOptions"
+  fieldLabel = "Max Idle"
+  fieldName = "vdiPoolMaxIdle"
+  helpBlock = "The maximum number of virtual desktops that should remain idle and ready."
+  labels = [ "ssr_vdi_1.0" ]
+  noBlank = true
+  optionList = { name = "ssr_vdi_1.0_vdiPoolMaxIdle" }
+  optionSource = "list"
+  required = true
+  showOnEdit = false
+  type = "select"
+  visibleOnCode = "matchAll::actionVdiPool:(Create),vdiPoolSize:(Custom)"
+}

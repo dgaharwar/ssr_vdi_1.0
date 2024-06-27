@@ -1,0 +1,15 @@
+resource "option-type-list" "ssr_vdi_1.0_vdisInPoolList" {
+  name = "ssr_vdi_1.0_vdisInPoolList"
+  uuid = "35cd8327-36f0-445f-8816-27dd6e83471b"
+  initialDataset = <<EOFSCRIBE
+'1',1
+'2',2
+'3',3
+'4',4
+'5',5
+EOFSCRIBE
+  labels = [ "ssr_vdi_1.0" ]
+  realTime = true
+  type = "manual"
+  visibility = "public"
+}

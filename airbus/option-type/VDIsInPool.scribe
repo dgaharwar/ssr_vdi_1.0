@@ -1,0 +1,19 @@
+resource "option-type" "VDIsInPool" {
+  code = "VDIsInPool"
+  name = "ssr_vdi_1.0_vdisInPoolList"
+  uuid = "1032ff29-64d5-42ae-9b87-4472f786447d"
+  dependsOnCode = "vdiPoolName"
+  description = "List of VDIs in Pool"
+  displayOrder = 4
+  editable = true
+  exportMeta = true
+  fieldContext = "config.customOptions"
+  fieldLabel = "VDIs remaining in Pool"
+  fieldName = "VDIsInPool"
+  helpBlock = "You have the following VDI's remaining in the Pool. If no VDI is chosen, all the remaining VDIs will be deleted along with the pool. However, if you select a VDI from the list, only the chosen one will be deleted, leaving the others and the pool intact."
+  labels = [ "ssr_vdi_1.0" ]
+  optionList = { name = "ssr_vdi_1.0_vdisInPoolList" }
+  optionSource = "list"
+  type = "select"
+  visibleOnCode = "actionVdiPool:(Delete)"
+}

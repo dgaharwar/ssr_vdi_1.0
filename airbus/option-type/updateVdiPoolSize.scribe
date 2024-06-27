@@ -1,0 +1,20 @@
+resource "option-type" "updateVdiPoolSize" {
+  code = "updateVdiPoolSize"
+  name = "ssr_vdi_1.0_updateVdiPoolSize"
+  uuid = "c04db345-dfba-414b-9aad-67a0e7e621f6"
+  dependsOnCode = "matchAll::actionVdiPool,vdiPoolName,currentVdiPoolValues"
+  description = "Update VDI Pool Size"
+  displayOrder = 18
+  fieldContext = "config.customOptions"
+  fieldLabel = "VDI Pool Size"
+  fieldName = "updateVdiPoolSize"
+  helpBlock = "Select the VDI Pool size."
+  labels = [ "ssr_vdi_1.0" ]
+  optionList = { name = "ssr_vdi_1.0_updateVdiPoolSizeList" }
+  optionSource = "list"
+  requireOnCode = "actionVdiPool:(Update)"
+  showOnCreate = false
+  showOnEdit = false
+  type = "select"
+  visibleOnCode = "matchAll::actionVdiPool:(Update)"
+}

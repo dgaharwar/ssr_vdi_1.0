@@ -1,0 +1,11 @@
+resource "option-type-list" "ssr_vdi_1.0_vdiPoolList" {
+  name = "ssr_vdi_1.0_vdiPoolList"
+  uuid = "a8a9721b-18aa-4f5c-ba31-679753affd5b"
+  config = "{\"sourceHeaders\":[{\"name\":\"Authorization\",\"value\":\"Bearer 1f14016f-cf59-42c1-acb9-32a46cc4ac05\",\"masked\":false}]}"
+  ignoreSSLErrors = true
+  initialDataset = "'dg-vdi-pool',1"
+  labels = [ "ssr_vdi_1.0" ]
+  realTime = true
+  type = "manual"
+  visibility = "public"
+}

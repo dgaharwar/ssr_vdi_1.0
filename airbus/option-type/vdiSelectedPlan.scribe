@@ -1,0 +1,22 @@
+resource "option-type" "vdiSelectedPlan" {
+  code = "vdiSelectedPlan"
+  name = "ssr_vdi_1.0_vdiSelectedPlan"
+  uuid = "7564ed91-badd-43e9-ba3d-31e643171632"
+  dependsOnCode = "vdiSelectedGroup"
+  description = "T-Shirt Size of your VDI. Please refer to the Wiki for details"
+  displayOrder = 10
+  exportMeta = true
+  fieldContext = "config.customOptions"
+  fieldLabel = "T-Shirt Size"
+  fieldName = "vdiSelectedPlan"
+  helpBlock = "T-Shirt Size of your VDI. Please refer to the Wiki for details."
+  labels = [ "ssr_vdi_1.0" ]
+  noBlank = true
+  optionList = { name = "ssr_vdi_1.0_vdiPlanList" }
+  optionSource = "list"
+  requireOnCode = "actionVdiPool:(Create)"
+  required = true
+  showOnEdit = false
+  type = "select"
+  visibleOnCode = "actionVdiPool:(Create)"
+}

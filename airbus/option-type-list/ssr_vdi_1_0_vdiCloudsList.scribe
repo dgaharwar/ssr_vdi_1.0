@@ -1,0 +1,14 @@
+resource "option-type-list" "ssr_vdi_1.0_vdiCloudsList" {
+  name = "ssr_vdi_1.0_vdiCloudsList"
+  uuid = "feee61a6-cce4-4e65-bd2a-34aa30c2cae9"
+  apiType = "clouds"
+  description = "Clouds"
+  labels = [ "ssr_vdi_1.0" ]
+  realTime = true
+  translationScript = <<EOFSCRIBE
+for(var x = 0; x < data.length; x++){
+      results.push({ "name": data[x].name, "value": data[x].value + ';' + data[x].name});}
+EOFSCRIBE
+  type = "api"
+  visibility = "public"
+}

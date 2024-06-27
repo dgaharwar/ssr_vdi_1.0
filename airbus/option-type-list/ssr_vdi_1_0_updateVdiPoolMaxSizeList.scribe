@@ -1,0 +1,32 @@
+resource "option-type-list" "ssr_vdi_1.0_updateVdiPoolMaxSizeList" {
+  name = "ssr_vdi_1.0_updateVdiPoolMaxSizeList"
+  uuid = "2ea2e3d0-a5db-4cfb-940f-481e1cb85cdf"
+  description = "Max Size"
+  initialDataset = "[{\"name\": \"maxPoolSize\", \"value\": 50}]"
+  labels = [ "ssr_vdi_1.0" ]
+  realTime = true
+  translationScript = <<EOFSCRIBE
+if(input.updateVdiPoolSize){
+        var n = input.updateVdiPoolSize.split(";")[0]
+        var v = parseInt((input.updateVdiPoolSize.split(";")[1]).split(",")[0])
+        if(n.includes("Custom")){
+          for(var y = v; y <= parseInt(data[0].value); y++){
+            if(y <= 25){
+              if(y === v){results.push({ "name": y.toString() + " Current", "value": y })}
+              else{results.push({ "name": y.toString(), "value": y })}}
+            else if((y > 25) && (y%10 === 0)){
+              if(y === v){results.push({ "name": y.toString() + " Current", "value": y })}
+              else{results.push({ "name": y.toString(), "value": y })}}}}
+        else if(n.includes("Small")){
+          if(v === 10){results.push({"name": "10 Current", "value": 10})}
+          else{results.push({"name": "10", "value": 10});}}
+        else if(n.includes("Medium")){
+          if(v === 25){results.push({"name": "25 Current", "value": 25})}
+          else{results.push({"name": "25", "value": 25});}}
+        else if(n.includes("Large")){
+          if(v === 50){results.push({"name": "50 Current", "value": 50})}
+          else{results.push({"name": "50", "value": 50});}}}
+EOFSCRIBE
+  type = "manual"
+  visibility = "public"
+}

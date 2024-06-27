@@ -1,0 +1,15 @@
+resource "option-type" "vdiSsrDefinition" {
+  code = "vdiSsrDefinition"
+  name = "ssr_vdi_1.0_vdiSsrDefinition"
+  uuid = "d08c9faf-79fb-49ac-8f2d-fbaddf793ec1"
+  defaultValue = "{{ rl_cmp_ssr_manage_ssr_definition }}"
+  description = "vdiSsrDefinition"
+  displayOrder = 24
+  fieldContext = "config.customOptions"
+  fieldLabel = "vdiSsrDefinition"
+  fieldName = "vdiSsrDefinition"
+  labels = [ "ssr_vdi_1.0" ]
+  showOnCreate = false
+  showOnEdit = false
+  type = "hidden"
+}

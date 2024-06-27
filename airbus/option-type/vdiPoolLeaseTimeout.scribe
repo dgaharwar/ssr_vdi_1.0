@@ -1,0 +1,20 @@
+resource "option-type" "vdiPoolLeaseTimeout" {
+  code = "vdiPoolLeaseTimeout"
+  name = "ssr_vdi_1.0_vdiPoolLeaseTimeout"
+  uuid = "24c6e738-8de6-47df-b249-3513d7fc4490"
+  defaultValue = "60"
+  dependsOnCode = "actionVdiPool"
+  description = "VDI Pool Lease Timeout"
+  displayOrder = 17
+  fieldContext = "config.customOptions"
+  fieldLabel = "Lease Timeout"
+  fieldName = "vdiPoolLeaseTimeout"
+  helpBlock = "The user lease time on a virtual desktop they've reserved. The lease will continue to auto-renew itself as long as the user is logged into Morpheus. Once the user has logged out and the lease timeout period has expired, the machine will be released as appropriate based on your configuration."
+  labels = [ "ssr_vdi_1.0" ]
+  optionList = { name = "ssr_vdi_1.0_vdiPoolLeaseTimeout" }
+  optionSource = "list"
+  required = true
+  showOnEdit = false
+  type = "select"
+  visibleOnCode = "actionVdiPool:(Create)"
+}

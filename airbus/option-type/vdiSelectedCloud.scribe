@@ -1,0 +1,24 @@
+resource "option-type" "vdiSelectedCloud" {
+  code = "vdiSelectedCloud"
+  name = "ssr_vdi_1.0_vdiSelectedCloud"
+  uuid = "6281a584-1e49-4f6a-8763-c46c2827ff13"
+  dependsOnCode = "actionVdiPool"
+  description = "Morpheus Cloud that this VDI will be part of."
+  displayOrder = 8
+  editable = true
+  exportMeta = true
+  fieldContext = "config.customOptions"
+  fieldLabel = "Cloud"
+  fieldName = "vdiSelectedCloud"
+  helpBlock = "Select the cloud where the VDI Pool will be created."
+  labels = [ "ssr_vdi_1.0" ]
+  noBlank = true
+  optionList = { name = "ssr_vdi_1.0_vdiCloudsList" }
+  optionSource = "list"
+  requireOnCode = "actionVdiPool:(Create)"
+  required = true
+  showOnCreate = false
+  showOnEdit = false
+  type = "select"
+  visibleOnCode = "actionVdiPool:(Create)"
+}

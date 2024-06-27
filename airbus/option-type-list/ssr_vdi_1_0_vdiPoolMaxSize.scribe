@@ -1,0 +1,21 @@
+resource "option-type-list" "ssr_vdi_1.0_vdiPoolMaxSize" {
+  name = "ssr_vdi_1.0_vdiPoolMaxSize"
+  uuid = "3542568f-ad00-4039-a938-8b6a821bc122"
+  description = "Max Size"
+  initialDataset = "[{\"name\": \"maxPoolSize\", \"value\": 50}]"
+  labels = [ "ssr_vdi_1.0" ]
+  realTime = true
+  translationScript = <<EOFSCRIBE
+if(input.vdiPoolSize){
+  for(var x = 0; x < data.length; x++){
+    if(input.vdiPoolSize == "Custom"){
+      for(var y = 1; y <= parseInt(data[x].value); y++){
+        if(y <= 25){results.push({ "name": y.toString(), "value": y });}
+        else if((y > 25) && (y%10 === 0)){results.push({ "name": y.toString(), "value": y });}}}
+    else if(input.vdiPoolSize == "Small"){results.push({ "name": "10", "value": 10 });}
+    else if(input.vdiPoolSize == "Medium"){results.push({ "name": "25", "value": 25 });}
+    else if(input.vdiPoolSize == "Large"){results.push({ "name": "50", "value": 50 });}}}
+EOFSCRIBE
+  type = "manual"
+  visibility = "public"
+}

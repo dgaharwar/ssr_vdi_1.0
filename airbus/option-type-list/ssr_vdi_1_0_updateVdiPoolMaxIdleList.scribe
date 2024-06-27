@@ -1,0 +1,32 @@
+resource "option-type-list" "ssr_vdi_1.0_updateVdiPoolMaxIdleList" {
+  name = "ssr_vdi_1.0_updateVdiPoolMaxIdleList"
+  uuid = "4d8c0cc2-84ee-428f-add3-4d46b44028b2"
+  description = "Max Idle"
+  initialDataset = "[{\"name\": \"maxPoolIdle\", \"value\": 50}]"
+  labels = [ "ssr_vdi_1.0" ]
+  realTime = true
+  translationScript = <<EOFSCRIBE
+if(input.updateVdiPoolMaxSize && input.updateVdiPoolMinIdle && input.updateVdiPoolSize){
+      var n = input.updateVdiPoolSize.split(";")[0]
+      var v = parseInt((input.updateVdiPoolSize.split(";")[1]).split(",")[3])
+      if(n.includes("Custom")){
+          for(var y = (parseInt(input.updateVdiPoolMinIdle) +1); (y <= parseInt(input.updateVdiPoolMaxSize) && (y <= parseInt(data[0].value))); y++){
+              if(y <= 25){
+                  if(y === v){results.push({ "name": y.toString() + " Current", "value": y })}
+                  else{results.push({ "name": y.toString(), "value": y })}}
+              else if((y > 25) && (y%10 === 0)){
+                  if(y === v){results.push({ "name": y.toString() + " Current", "value": y })}
+                  else{results.push({ "name": y.toString(), "value": y })}}}}
+      else if(n.includes("Small")){
+          if(v === 2 ){results.push({ "name": "2 Current", "value": 2 })}
+          else{results.push({ "name": "2", "value": 2 })}}
+      else if(n.includes("Medium")){
+          if(v === 8){results.push({ "name": "8 Current", "value": 8 })}
+          else{results.push({ "name": "8", "value": 8 })}}
+      else if(n.includes("Large")){
+          if(v === 10){results.push({ "name": "10 Current", "value": 10 })}
+          else{results.push({ "name": "10", "value": 10 })}}}
+EOFSCRIBE
+  type = "manual"
+  visibility = "public"
+}

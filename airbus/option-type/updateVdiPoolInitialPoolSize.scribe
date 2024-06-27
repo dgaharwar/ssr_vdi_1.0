@@ -1,0 +1,19 @@
+resource "option-type" "updateVdiPoolInitialPoolSize" {
+  code = "updateVdiPoolInitialPoolSize"
+  name = "ssr_vdi_1.0_updateVdiPoolInitialPoolSize"
+  uuid = "437d5dd6-c655-412b-b861-ba8f34b19986"
+  dependsOnCode = "matchAll::actionVdiPool,updateVdiPoolSize,updateVdiPoolMaxSize"
+  description = "VDI Pool Initial Pool Size"
+  displayOrder = 20
+  fieldContext = "config.customOptions"
+  fieldLabel = "Initial Pool Size"
+  fieldName = "updateVdiPoolInitialPoolSize"
+  helpBlock = "Number of virtual desktops that will be prepared when the pool is created."
+  labels = [ "ssr_vdi_1.0" ]
+  optionList = { name = "ssr_vdi_1.0_updateVdiInitialPoolSizeList" }
+  optionSource = "list"
+  requireOnCode = "actionVdiPool:(Update)"
+  showOnCreate = false
+  type = "select"
+  visibleOnCode = "matchAll::actionVdiPool:(Update)"
+}

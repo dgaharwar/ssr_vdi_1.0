@@ -1,0 +1,16 @@
+resource "option-type" "actionVdiPool" {
+  code = "actionVdiPool"
+  name = "ssr_vdi_1.0_actionVdiPool"
+  uuid = "af0cdd9f-fba0-4b95-95dd-f45644c6f14e"
+  description = "Action list to Create or Delete a VDI Pool"
+  fieldContext = "config.customOptions"
+  fieldLabel = "Action"
+  fieldName = "actionVdiPool"
+  helpBlock = "Select the action to be performed."
+  labels = [ "ssr_vdi_1.0" ]
+  optionList = { name = "ssr_vdi_1.0_actionListCD" }
+  optionSource = "list"
+  required = true
+  showOnEdit = false
+  type = "select"
+}

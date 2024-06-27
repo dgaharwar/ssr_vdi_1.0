@@ -1,0 +1,33 @@
+resource "option-type-list" "ssr_vdi_1.0_vdiGroupsList" {
+  name = "ssr_vdi_1.0_vdiGroupsList"
+  uuid = "11f4a222-66f1-4482-9b18-a06dba12e5a8"
+  apiType = "groups"
+  description = "Groups"
+  labels = [ "ssr_vdi_1.0" ]
+  realTime = true
+  requestScript = <<EOFSCRIBE
+if(input.vdiSelectedCloud){
+      results.zoneId = input.vdiSelectedCloud.split(';')[0];}
+EOFSCRIBE
+  translationScript = <<EOFSCRIBE
+if(input.vdiSelectedCloud){
+      var filltered_data = [];
+      function fillter_data(tier){
+          for(var i = 0; i < data.length; i++){
+              if (data[i].name.toLowerCase().includes(tier.toLowerCase())){
+                  filltered_data.push(data[i]);
+              }}
+      return filltered_data;
+      };
+      function push_results(filltered_data){
+          for(var x = 0; x < filltered_data.length; x++){
+              results.push({ "name": filltered_data[x].name, "value": filltered_data[x].value + ';' + filltered_data[x].name});}
+      };
+      if(fillter_data("VMware").length > 0){push_results(filltered_data)}
+      else if(fillter_data("All Clouds").length > 0){push_results(filltered_data)}
+      else if(fillter_data("Default").length > 0){push_results(filltered_data)}
+      };
+EOFSCRIBE
+  type = "api"
+  visibility = "public"
+}

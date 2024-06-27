@@ -1,0 +1,20 @@
+resource "option-type" "vdiPoolName" {
+  code = "vdiPoolName"
+  name = "ssr_vdi_1.0_vdiPoolName"
+  uuid = "ead8e2cd-a77e-4297-8156-22730cbd2512"
+  dependsOnCode = "actionVdiPool"
+  description = "Select the VDI Pool."
+  displayOrder = 2
+  editable = true
+  exportMeta = true
+  fieldContext = "config.customOptions"
+  fieldLabel = "Pool Name"
+  fieldName = "vdiPoolName"
+  helpBlock = "Select the VDI Pool."
+  labels = [ "ssr_vdi_1.0" ]
+  optionList = { name = "ssr_vdi_1.0_vdiPoolList" }
+  optionSource = "list"
+  requireOnCode = "actionVdiPool:(Update|Delete)"
+  type = "select"
+  visibleOnCode = "actionVdiPool:(Update|Delete)"
+}

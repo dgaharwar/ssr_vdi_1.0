@@ -1,0 +1,24 @@
+resource "option-type" "vdiSelectedGroup" {
+  code = "vdiSelectedGroup"
+  name = "ssr_vdi_1.0_vdiSelectedGroup"
+  uuid = "4846fc56-11b4-490e-a5ac-99574757c17b"
+  dependsOnCode = "vdiSelectedCloud"
+  description = "Group"
+  displayOrder = 9
+  editable = true
+  exportMeta = true
+  fieldContext = "config.customOptions"
+  fieldLabel = "Group"
+  fieldName = "vdiSelectedGroup"
+  helpBlock = "Select the group where the VDI Pool will be created."
+  labels = [ "ssr_vdi_1.0" ]
+  noBlank = true
+  optionList = { name = "ssr_vdi_1.0_vdiGroupsList" }
+  optionSource = "list"
+  requireOnCode = "actionVdiPool:(Create)"
+  required = true
+  showOnCreate = false
+  showOnEdit = false
+  type = "select"
+  visibleOnCode = "actionVdiPool:(Create)"
+}
